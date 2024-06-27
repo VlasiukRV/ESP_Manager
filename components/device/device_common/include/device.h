@@ -50,8 +50,8 @@ protected:
 	GpioBase *gpio_ { nullptr };
 
 	const char *_name { "" };
-	DeviceType _device_type { DEVICE_MODE_DISABLE };
-	DeviceState _device_state { DEVICE_OFF };
+	DeviceType deviceType { DEVICE_MODE_DISABLE };
+	DeviceState deviceState { DEVICE_OFF };
 
 };
 
