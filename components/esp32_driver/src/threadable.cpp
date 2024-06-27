@@ -8,26 +8,26 @@
 #include "threadable.h"
 
 Threadable::Threadable() {
-	task_handle = nullptr;
-	task_param = nullptr;
+	taskHandle = nullptr;
+	taskParam = nullptr;
 }
 
 Threadable::~Threadable() {
 
-	if (task_handle != nullptr) {
-		vTaskDelete(task_handle);
+	if (taskHandle != nullptr) {
+		vTaskDelete(taskHandle);
 	}
 
-	if (task_param != nullptr) {
-		delete task_param;
+	if (taskParam != nullptr) {
+		delete taskParam;
 	}
 }
 
 void Threadable::run_task() {
 
-	if (task_handle != nullptr) {
+	if (taskHandle != nullptr) {
 
-		vTaskResume(task_handle);
+		vTaskResume(taskHandle);
 
 	} else {
 
@@ -35,19 +35,19 @@ void Threadable::run_task() {
 			TaskParams *taskParams = static_cast<TaskParams*>(pvParameters);
 			taskParams->method();
 		}, //Function to implement the task
-				task_param->task_name, //Name of the task
-				task_param->task_stack_size, //Stack size in words
-				task_param, //Task input parameter
+				taskParam->taskName, //Name of the task
+				taskParam->taskStackSize, //Stack size in words
+				taskParam, //Task input parameter
 				tskIDLE_PRIORITY + 1, //Priority of the task
-				&task_handle, //Task handle.
+				&taskHandle, //Task handle.
 				APP_CPU_NUM); //Core where the task should run
 
-		if (task_handle == nullptr) {
+		if (taskHandle == nullptr) {
 			ESP_LOGI("", "*** [Error] Failed to create task %s!\n",
-					task_param->task_name);
+					taskParam->taskName);
 		} else {
 			ESP_LOGI("", "*** Tasks created successfully %s (%p)!\n",
-					task_param->task_name, task_handle);
+					taskParam->taskName, taskHandle);
 		}
 
 	}
@@ -56,11 +56,11 @@ void Threadable::run_task() {
 
 void Threadable::stop_task() {
 
-	if (task_handle != nullptr) {
+	if (taskHandle != nullptr) {
 
-		vTaskSuspend(task_handle);
-		ESP_LOGI("", "*** Task %s (%p) is suspend!\n", task_param->task_name,
-				task_handle);
+		vTaskSuspend(taskHandle);
+		ESP_LOGI("", "*** Task %s (%p) is suspend!\n", taskParam->taskName,
+				taskHandle);
 
 	}
 

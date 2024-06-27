@@ -18,8 +18,8 @@ class Threadable;
 
 struct TaskParams {
 	std::function<void()> method;
-	const char *task_name;
-	uint32_t task_stack_size = 1024;
+	const char *taskName;
+	uint32_t taskStackSize = 1024;
 };
 
 class Threadable {
@@ -30,10 +30,10 @@ public:
 	void run_task();
 	void stop_task();
 
-	TaskParams *task_param = nullptr;
+	TaskParams *taskParam = nullptr;
 
 protected:
-	TaskHandle_t task_handle = nullptr;
+	TaskHandle_t taskHandle = nullptr;
 
 };
 
