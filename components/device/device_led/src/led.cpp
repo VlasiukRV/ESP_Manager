@@ -23,11 +23,11 @@ Led::Led(const int pin, const char *name) :
 
 int Led::blink_on() {
 
-	task_param = new TaskParams();
+	taskParam = new TaskParams();
 
-	task_param->task_name = "Led_Blink";
-	task_param->task_stack_size = 1024;
-	task_param->method = [this]() {
+	taskParam->taskName = "Led_Blink";
+	taskParam->taskStackSize = 1024;
+	taskParam->method = [this]() {
 		this->runBlink();
 	};
 

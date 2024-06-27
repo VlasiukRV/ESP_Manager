@@ -168,11 +168,11 @@ public:
 
 	void start() {
 
-		task_param = new TaskParams();
+		taskParam = new TaskParams();
 
-		task_param->task_name = "StateMachine_Blink";
-		task_param->task_stack_size = 4096;
-		task_param->method = [this]() {
+		taskParam->taskName = "StateMachine_Blink";
+		taskParam->taskStackSize = 4096;
+		taskParam->method = [this]() {
 			this->runLoop();
 		};
 
