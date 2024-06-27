@@ -35,19 +35,19 @@ int Device::get_pin() {
 
 void Device::set_device_type(const DeviceType device_type) {
 
-	this->_device_type = device_type;
+	this->deviceType = device_type;
 
 }
 
 DeviceType Device::get_device_type() {
 
-	return this->_device_type;
+	return this->deviceType;
 
 }
 
 DeviceState Device::get_device_state() {
 
-	return this->_device_state;
+	return this->deviceState;
 
 }
 

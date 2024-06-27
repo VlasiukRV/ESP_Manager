@@ -26,7 +26,7 @@ ExecutorDevice::ExecutorDevice(const int pin, const char *name) {
 int ExecutorDevice::on() {
 
 	static_cast<GpioOutput*>(gpio_)->on();
-	this->_device_state = DEVICE_ON;
+	this->deviceState = DEVICE_ON;
 
 	return 1;
 
@@ -35,7 +35,7 @@ int ExecutorDevice::on() {
 int ExecutorDevice::off() {
 
 	static_cast<GpioOutput*>(gpio_)->off();
-	this->_device_state = DEVICE_OFF;
+	this->deviceState = DEVICE_OFF;
 
 	return 1;
 }
@@ -43,8 +43,8 @@ int ExecutorDevice::off() {
 int ExecutorDevice::toggle() {
 
 	static_cast<GpioOutput*>(gpio_)->toggle();
-	this->_device_state =
-			this->_device_state == DEVICE_ON ? DEVICE_OFF : DEVICE_ON;
+	this->deviceState =
+			this->deviceState == DEVICE_ON ? DEVICE_OFF : DEVICE_ON;
 
 	return 1;
 }

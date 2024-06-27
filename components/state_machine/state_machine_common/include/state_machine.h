@@ -82,7 +82,7 @@ template<typename Type> class TimeStateMachine: public Threadable {
 private:
 
 	volatile bool run = false;
-	TaskHandle_t handle_task_run = nullptr;
+	TaskHandle_t handleTaskRun = nullptr;
 
 	// Принудительное изменение шага: и сразу исполняет его команду.
 	void run_state(int _toStep) {
@@ -127,8 +127,8 @@ public:
 	;
 
 	~TimeStateMachine() {
-		if (handle_task_run != nullptr) {
-			vTaskDelete(handle_task_run);
+		if (handleTaskRun != nullptr) {
+			vTaskDelete(handleTaskRun);
 		}
 
 	}
